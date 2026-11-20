@@ -1,21 +1,12 @@
-# <--- --Stage 1—---->
-
-FROM node:18-alpine AS builder
+FROM node:18-alpine 
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
-
-# <--- --Stage 2----->
-FROM node:18-alpine
-RUN adduser -S appuser
-WORKDIR /app
-COPY --from=builder /app .
-USER appuser
 
 EXPOSE 5000
 
