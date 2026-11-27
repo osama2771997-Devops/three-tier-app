@@ -16,7 +16,7 @@ services:
 
 
   backend:
-    image: ghcr.io/osama2771997-devops/three-tier-app-backend:latest
+    image: ghcr.io/osama2771997-devops/three-tier-app/backend:latest
     build: ./backend
     container_name: backend
     ports:
