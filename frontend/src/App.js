@@ -7,7 +7,7 @@ function App() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_BASE_URL = 'http://32.201.75.232:5000';
+  const API_BASE_URL = 'http://100.53.10.191/:5000';
 
   const fetchItems = useCallback(async () => {
     try {
