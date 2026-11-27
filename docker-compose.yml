@@ -1,3 +1,4 @@
+
 services:
   database:
     image: mongo:latest
@@ -13,7 +14,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-
 
   backend:
     image: ghcr.io/osama2771997-devops/three-tier-app/backend:${BUILD_NUMBER}
@@ -31,19 +31,11 @@ services:
       retries: 3
     user: "1000:1000"
     read_only: true
+    networks:
+      - app-network
 
-  #frontend:
-  #image: ghcr.io/osama2771997-Devops/three-tier-app-frontend:latest
-   # build: ./frontend
-    #container_name: frontend
-    #ports:
-     # - "3000:3000"
-    #depends_on:
-     # - backend
-
-     
   frontend:
-   image: ghcr.io/osama2771997-devops/three-tier-app/frontend:${BUILD_NUMBER}
+    image: ghcr.io/osama2771997-devops/three-tier-app/frontend:${BUILD_NUMBER}
     build: ./frontend
     container_name: frontend
     ports:
@@ -56,9 +48,12 @@ services:
       retries: 3
     user: "1000:1000"
     read_only: true
+    networks:
+      - app-network
 
 volumes:
   mongo-data:
+
 networks:
   app-network:
     driver: bridge
