@@ -16,6 +16,7 @@ services:
 
 
   backend:
+    image: ghcr.io/osama2771997-Devops/three-tier-app-backend:latest
     build: ./backend
     container_name: backend
     ports:
@@ -32,6 +33,7 @@ services:
     read_only: true
 
   frontend:
+  image: ghcr.io/osama2771997-Devops/three-tier-app-frontend:latest
     build: ./frontend
     container_name: frontend
     ports:
